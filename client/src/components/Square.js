@@ -20,17 +20,11 @@ class Square extends PureComponent {
     addBoatSquare(row, col, boat)
   }
 
-  makeClassName = () => {
-    const {value} = this.props
-    let classNameArray = ['Square']
-    classNameArray.push(`value${value || 0}`)
-    return classNameArray.join(' ')
-  }
 
   render() {
     return (
       <div
-      className = {this.makeClassName()}
+      className = {`Square value${this.props.value}`}
       onClick = {this.handleClick}
       />
 
@@ -45,3 +39,8 @@ const mapStateToProps = (reduxState) => {
 }
 
 export default connect(mapStateToProps, { addBoatSquare })(Square)
+
+//creates class Square with props of the square
+//className css purpose
+//handleClick function to change the value of the square on the boatMapPlayer1(store)
+//handleClick function calls addBoatSquare function

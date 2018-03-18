@@ -11,10 +11,9 @@ export class Instructions extends PureComponent {
     currentPlayer: PropTypes.number.isRequired,
     boat:PropTypes.number.isRequired,
     nextBoat: PropTypes.func.isRequired,
-    changePlayer: PropTypes.func.isRequired,
-    errorText: PropTypes.string
+    changePlayer: PropTypes.func.isRequired
   }
-
+//function from lib.js that writes which boat to create next
 makeText = () => {
   const {boat} = this.props
   return createBoatInstruction(boat)

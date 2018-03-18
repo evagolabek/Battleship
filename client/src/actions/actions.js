@@ -13,3 +13,6 @@ export const changePlayer = () => ({
 export const nextBoat = () => ({
   type: NEXT_BOAT
 })
+
+
+//actions that shout to the reducers

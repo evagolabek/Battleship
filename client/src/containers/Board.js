@@ -7,9 +7,7 @@ import { connect } from 'react-redux'
 
 export class Board extends PureComponent {
   static propTypes = {
-    board: PropTypes.arrayOf(
-      PropTypes.arrayOf(PropTypes.number)
-    ).isRequired
+    board: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)).isRequired
   }
 
   renderRow = (row, rowIndex) => {
@@ -50,3 +48,8 @@ const mapStateToProps = (reduxState) => {
 
 
 export default connect(mapStateToProps)(Board)
+
+//prop board (arrayOfarray) that is connected to boatMapPlayer1
+//for each row in board do renderRow function
+//then for each value in row do renderSquare function
+//creates component square to which we give value, row, col

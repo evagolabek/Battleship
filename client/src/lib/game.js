@@ -1,3 +1,12 @@
+const boatsLength = {
+  1:5,
+  2:4,
+  3:3,
+  4:3,
+  5:2
+}
+
+
 export const checkBoat = (boat) => {
   return true
 }
@@ -12,3 +21,5 @@ export const createBoatInstruction = (boat) => {
     default: return "game state unknown"
   }
 }
+
+//string interpolation possible

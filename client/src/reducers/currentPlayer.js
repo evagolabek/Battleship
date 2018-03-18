@@ -7,6 +7,6 @@ export default (state = 1, {type, payload } = {}) => {
       return 1
 
     default:
-      return 1
+      return state
   }
 }
