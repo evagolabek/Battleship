@@ -2,13 +2,13 @@ export const checkBoat = (boat) => {
   return true
 }
 
-export const gameStateToBoatNumber = (gameState) => {
-  switch(gameState) {
-    case "addBoat1": return 1;
-    case "addBoat2": return 2;
-    case "addBoat3": return 3;
-    case "addBoat4": return 4;
-    case "addBoat5": return 5;
-    default: return 0;
+export const createBoatInstruction = (boat) => {
+  switch (boat) {
+    case 1: return "Create Boat1 length 5 squares and click OK"
+    case 2: return "Create Boat2 length 4 squares and click OK"
+    case 3: return "Create Boat3 length 3 squares and click OK"
+    case 4: return "Create Boat4 length 3 squares and click OK"
+    case 5: return "Create Boat5 length 2 squares and click OK"
+    default: return "game state unknown"
   }
 }

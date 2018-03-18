@@ -1,2 +1,3 @@
-export const ADD_BOAT = 'ADD_BOAT'
-export const BOAT_COMPLETED = 'BOAT_COMPLETED'
+export const ADD_BOAT_SQUARE = 'ADD_BOAT_SQUARE'
+export const CHANGE_PLAYER = 'CHANGE_PLAYER'
+export const NEXT_BOAT = 'NEXT_BOAT'

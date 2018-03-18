@@ -23,6 +23,7 @@ export class Board extends PureComponent {
   renderSquare = rowIndex => (value, colIndex) => {
     return (
       <Square
+      key={colIndex}
       value={value}
       row={rowIndex}
       col={colIndex}
@@ -39,14 +40,13 @@ export class Board extends PureComponent {
   }
 }
 
-// At the bottom of the file, where you connect your component:
+
 const mapStateToProps = (reduxState) => {
-  // return an object with the prop names (keys) and prop values
-  // taken from the reduxState (values)
+
   return {
     board: reduxState.boatMapPlayer1
   }
 }
 
-// Then pass it to connect:
+
 export default connect(mapStateToProps)(Board)

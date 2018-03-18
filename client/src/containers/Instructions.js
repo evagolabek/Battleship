@@ -2,33 +2,29 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import './Instructions.css'
 import { connect } from 'react-redux'
-import { checkBoat } from '../lib/game'
-import { boatCompleted } from '../actions/actions'
+import { checkBoat, createBoatInstruction } from '../lib/game'
+import { nextBoat, changePlayer } from '../actions/actions'
 
 
 export class Instructions extends PureComponent {
   static propTypes = {
     currentPlayer: PropTypes.number.isRequired,
-    gameState: PropTypes.string.isRequired,
-    boatCompleted: PropTypes.func.isRequired
+    boat:PropTypes.number.isRequired,
+    nextBoat: PropTypes.func.isRequired,
+    changePlayer: PropTypes.func.isRequired,
+    errorText: PropTypes.string
   }
 
 makeText = () => {
-  const {gameState} = this.props
-  switch (gameState) {
-    case "addBoat1": return "Create Boat1 length 5 squares and click OK"
-    case "addBoat2": return "Create Boat2 length 4 squares and click OK"
-    case "addBoat3": return "Create Boat3 length 3 squares and click OK"
-    case "addBoat4": return "Create Boat4 length 3 squares and click OK"
-    case "addBoat5": return "Create Boat5 length 2 squares and click OK"
-    default: return "game state unknown"
-  }
+  const {boat} = this.props
+  return createBoatInstruction(boat)
 }
 
 handleClick = () => {
-  const {gameState, boatCompleted} = this.props
-  if (checkBoat(gameState) === true) {
-    boatCompleted()
+  const {boat, nextBoat, changePlayer} = this.props
+  if (checkBoat(boat) === true) {
+    if (boat === 5) changePlayer()
+    nextBoat()
   }
   else {
     console.log('error!');
@@ -50,8 +46,8 @@ handleClick = () => {
 const mapStateToProps = (reduxState) => {
   return {
     currentPlayer: reduxState.currentPlayer,
-    gameState: reduxState.gameState
+    boat: reduxState.boat
   }
 }
 
-export default connect(mapStateToProps, { boatCompleted })(Instructions)
+export default connect(mapStateToProps, { nextBoat, changePlayer })(Instructions)
