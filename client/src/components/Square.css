@@ -1,0 +1,14 @@
+.Square {
+  flex: 1;
+  min-width: 40px;
+  max-width: 40px;
+  min-height: 40px;
+  max-height: 40px;
+  border: 2px solid #eee;
+  transition: all ease-in-out .6s;
+  cursor: pointer;
+}
+
+.Square.value1 {
+  background-color: blue;
+}
