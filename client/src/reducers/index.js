@@ -1,7 +1,9 @@
-import board from './board'
+import boatMapPlayer1 from './boatMapPlayer1'
 import gameState from './gameState'
+import currentPlayer from './currentPlayer'
 
 export default {
-  board,
+  boatMapPlayer1,
   gameState,
+  currentPlayer
 }

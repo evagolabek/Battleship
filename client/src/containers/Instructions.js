@@ -5,17 +5,16 @@ import { connect } from 'react-redux'
 
 
 export class Instructions extends PureComponent {
-  // static propTypes = {
-  //   board: PropTypes.arrayOf(
-  //     PropTypes.arrayOf(PropTypes.number)
-  //   ).isRequired
-  // }
+  static propTypes = {
+    currentPlayer: PropTypes.number.isRequired
+  }
 
 
   render() {
     return (
       <div className="Instructions">
-        <h4 className="text"> Create Boat 1 - lenght 5 squares</h4>
+        <h3 className="CurrentPlayer">Player{this.props.currentPlayer} is playing..</h3>
+        <h4 className="Text"> Create Boat 1 - lenght 5 squares</h4>
         <button onClick={this.handleClick} className = "okButton">OK</button>
       </div>
     )
@@ -23,11 +22,10 @@ export class Instructions extends PureComponent {
 }
 
 
-// const mapStateToProps = (reduxState) => {
-//   return {
-//     board: reduxState.board
-//   }
-// }
+const mapStateToProps = (reduxState) => {
+  return {
+    currentPlayer: reduxState.currentPlayer
+  }
+}
 
-
-export default connect()(Instructions)
+export default connect(mapStateToProps)(Instructions)

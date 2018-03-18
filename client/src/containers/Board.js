@@ -44,7 +44,7 @@ const mapStateToProps = (reduxState) => {
   // return an object with the prop names (keys) and prop values
   // taken from the reduxState (values)
   return {
-    board: reduxState.board
+    board: reduxState.boatMapPlayer1
   }
 }
 
