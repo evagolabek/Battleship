@@ -1,4 +1,4 @@
-import { CLICK } from '../actions/types'
+import { ADD_BOAT } from '../actions/types'
 
 const emptyBoard = [
   [0,0,0,0,0,0,0,0,0,0],
@@ -15,7 +15,7 @@ const emptyBoard = [
 
 export default (state = emptyBoard, {type, payload } = {}) => {
   switch (type) {
-    case CLICK:
+    case ADD_BOAT:
       return state.map((thisRow, rowIndex) => {
         if (rowIndex !== payload.row) return thisRow
 
@@ -23,7 +23,7 @@ export default (state = emptyBoard, {type, payload } = {}) => {
           if (colIndex !== payload.col) return thisValue
 
           switch (thisValue) {
-            case 0: return 1
+            case 0: return payload.boat
             default: return 0
           }
         })

@@ -1,8 +1,9 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import './Square.css'
-import { doClick } from '../actions/actions'
+import { addBoat } from '../actions/actions'
 import { connect } from 'react-redux'
+import { gameStateToBoatNumber } from '../lib/game'
 
 
 class Square extends PureComponent {
@@ -10,12 +11,14 @@ class Square extends PureComponent {
     value: PropTypes.number.isRequired,
     row: PropTypes.number.isRequired,
     col: PropTypes.number.isRequired,
-    doClick: PropTypes.func.isRequired,
+    addBoat: PropTypes.func.isRequired,
+    gameState: PropTypes.string.isRequired,
   }
 
   handleClick = () => {
-    const {row, col, doClick} = this.props
-    doClick(row, col)
+    const {row, col, addBoat, gameState} = this.props
+    let boat = gameStateToBoatNumber(gameState)
+    addBoat(row, col, boat)
   }
 
   makeClassName = () => {
@@ -36,6 +39,10 @@ class Square extends PureComponent {
   }
 }
 
-const mapStateToProps = null
+const mapStateToProps = (reduxState) => {
+  return {
+    gameState: reduxState.gameState
+  }
+}
 
-export default connect(mapStateToProps, { doClick })(Square)
+export default connect(mapStateToProps, { addBoat })(Square)
