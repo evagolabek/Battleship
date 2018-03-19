@@ -7,7 +7,7 @@ import { connect } from 'react-redux'
 
 export class Board extends PureComponent {
   static propTypes = {
-    board: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)).isRequired
+    board: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)).isRequired,
   }
 
   renderRow = (row, rowIndex) => {
@@ -30,19 +30,29 @@ export class Board extends PureComponent {
   }
 
   render() {
-    return (
-      <div className="Board">
-        {this.props.board.map(this.renderRow)}
-      </div>
-    )
+    if (this.props.currentPlayer === 1) {
+      return (
+        <div className="Board">
+          {this.props.boatMapPlayer1.map(this.renderRow)}
+        </div>
+      )
+    }
+    else {
+      return (
+        <div className="Board">
+          {this.props.boatMapPlayer2.map(this.renderRow)}
+        </div>
+      )
+    }
   }
 }
 
 
 const mapStateToProps = (reduxState) => {
-
   return {
-    board: reduxState.boatMapPlayer1
+    boatMapPlayer1: reduxState.boatMapPlayer1,
+    boatMapPlayer2: reduxState.boatMapPlayer2,
+    currentPlayer: reduxState.currentPlayer,
   }
 }
 
