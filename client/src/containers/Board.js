@@ -1,14 +1,14 @@
 import React, { PureComponent } from 'react'
-import PropTypes from 'prop-types'
+//import PropTypes from 'prop-types'
 import Square from '../components/Square'
 import './Board.css'
 import { connect } from 'react-redux'
 
 
 export class Board extends PureComponent {
-  static propTypes = {
-    board: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)).isRequired,
-  }
+  // static propTypes = {
+  //   board: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)).isRequired,
+  // }
 
   renderRow = (row, rowIndex) => {
     return (

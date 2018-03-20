@@ -15,7 +15,8 @@ class Square extends PureComponent {
   }
 
   handleClick = () => {
-    const {row, col, addBoatSquareP1, addBoatSquareP2, currentPlayer, boat} = this.props
+    const {row, col, addBoatSquareP1, addBoatSquareP2, currentPlayer, boat, value} = this.props
+    if (value !== 0 && value !== boat) return
     if (currentPlayer === 1) {
       addBoatSquareP1(row, col, boat)
     }
@@ -24,11 +25,18 @@ class Square extends PureComponent {
     }
   }
 
+  makeClassName = () => {
+    const {value} = this.props
+    let classNameArray = ['Square']
+    classNameArray.push(`value${value || 0}`)
+    return classNameArray.join(' ')
+  }
+
 
   render() {
     return (
       <div
-      className = {`Square value${this.props.value}`}
+      className = {this.makeClassName()}
       onClick = {this.handleClick}
       />
 
